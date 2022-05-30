@@ -1,0 +1,95 @@
+:root {
+    --darker-blue: #084f6e;
+    --dark-blue: #08709c;
+    --light-blue: #d1eaef;
+    --white: #ffffff;
+    --gray: #9b9b9b;
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--dark-blue);
+}
+
+#main-header {
+    background-color: var(--dark-blue);
+    flex: 0 0 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 1%;
+    color: var(--white);
+}
+
+#main-header ul {
+    flex: 0 0 60%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    margin-top: 1%;
+    font-size: 125%;
+}
+
+#main-header li:hover {
+    color: var(--gray);
+}
+
+#main-content {
+    flex: 0 0 100%;
+    margin-bottom: 1.5%;
+    padding-left: 15%;
+    background-color: var(--light-blue);
+}
+
+.card {
+    width: 80%;
+    margin-top: 1.5%;
+    border: solid var(--dark-blue) .5em;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--light-blue);
+}
+
+.card header {
+    background-color: var(--dark-blue);
+    padding: .5% 1%;
+    color: var(--white);
+}
+
+.card main {
+    padding: .5% 1% 1.5% 1%;
+}
+
+.card form {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.card input, .card textarea, .card button {
+    width: 100%;
+    padding: 1%;
+    margin-top: .5%;
+    border: none;
+    border-radius: .5em;
+}
+
+.card button:hover {
+    color: var(--gray);
+    background-color: var(--darker-blue);
+}
+
+.card button {
+    margin-top: 1.5%;
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+.post header, .post-list header {
+    display: flex;
+    justify-content: space-between;
+}

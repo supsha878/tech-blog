@@ -15,7 +15,7 @@ const hbs = exphbs.create({ helpers });
 
 // create session cookies
 const sess = {
-    secret: '',
+    secret: 'pineapple',
     cookie: {},
     resave: false,
     saveUninitialized: true,
