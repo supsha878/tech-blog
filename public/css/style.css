@@ -12,6 +12,10 @@ body {
     color: var(--dark-blue);
 }
 
+a {
+    color: var(--dark-blue);
+}
+
 #main-header {
     background-color: var(--dark-blue);
     flex: 0 0 100%;
