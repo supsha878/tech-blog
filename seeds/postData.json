@@ -1,8 +1,8 @@
 [
     {
         "title": "Model View Controller (MVC)",
-        "content": "MVC is a full-stack development technique that is used a lot in web applications.",
-        "user_id":  1
+        "content": "MVC is a full-stack development technique that is popular in web application development.",
+        "user_id": 1
     },
     {
         "title": "Object Oriented Programming",
