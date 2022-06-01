@@ -50,26 +50,26 @@ router.get('/post/:id', async (req, res) => {
     }
 });
 
-router.get('/post/:id/edit', async (req, res) => {
+router.get('/post/:id/comment', async (req, res) => {
     try {
-        const postData = await Post.findByPk(req.params.id);
+        const postData = await Post.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['username']
+                }
+            ]
+        });
 
         const post = postData.get({ plain: true });
 
-        res.render('edit-post', {
+        res.render('create-comment', {
             post,
             logged_in: req.session.logged_in
         });
     } catch (err) {
         res.status(500).json(err);
     }
-});
-
-router.get('/create', async (req, res) => {
-    if (!req.session.logged_in) {
-        res.redirect('/login');
-        return;
-    } res.render('create-post');
 });
 
 router.get('/dashboard', withAuth, async (req, res) => {
@@ -83,6 +83,28 @@ router.get('/dashboard', withAuth, async (req, res) => {
         res.render('dashboard', {
             posts,
             logged_in: true
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/create', async (req, res) => {
+    if (!req.session.logged_in) {
+        res.redirect('/login');
+        return;
+    } res.render('create-post');
+});
+
+router.get('/post/:id/edit', async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id);
+
+        const post = postData.get({ plain: true });
+
+        res.render('edit-post', {
+            post,
+            logged_in: req.session.logged_in
         });
     } catch (err) {
         res.status(500).json(err);

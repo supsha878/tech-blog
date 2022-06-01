@@ -1,0 +1,21 @@
+<div class="card post">
+    <header>
+        <h5>{{post.title}}</h5>
+        <p>{{post.user.username}}, {{format_date post.date_created}}</p>
+    </header>
+    <main>
+        <p>{{post.content}}</p>
+    </main>
+</div>
+
+<div class="card create-comment">
+    <main>
+        <form id="create-comment">
+            <label for="comment-content">Comment</label>
+            <textarea id="comment-content"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+</div>
+
+<script src="../../js/createComment.js"></script>
