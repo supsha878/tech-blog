@@ -1,4 +1,12 @@
-<p>{{user}}</p>
-<p>{{user.posts}}</p>
+{{#each posts as |post|}}
+<div class="card post-list">
+    <header>
+        <h5><a href="post/{{post.id}}/edit">{{post.title}}</a></h5>
+        <p>{{format_date post.date_created}}</p>
+    </header>
+</div>
+{{/each}}
 
-{{!-- TODO: dashboard page --}}
+<div class="button">
+    <button><h6>+ New Post</h6></button>
+</div>

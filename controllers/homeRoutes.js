@@ -50,19 +50,31 @@ router.get('/post/:id', async (req, res) => {
     }
 });
 
+router.get('/post/:id/edit', async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id);
+
+        const post = postData.get({ plain: true });
+
+        res.render('edit-post', {
+            post,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
-            include: [{ model: Post }]
+        const postData = await Post.findAll({
+            where: { user_id: req.session.user_id }
         });
 
-        const user = userData.get({ plain: true });
-
-        console.log(user);
+        const posts = postData.map((post) => post.get({ plain: true }));
 
         res.render('dashboard', {
-            ...user,
+            posts,
             logged_in: true
         });
     } catch (err) {

@@ -111,3 +111,24 @@ body {
     display: flex;
     justify-content: space-between;
 }
+
+.button {
+    margin-top: 1.5%;
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button button {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    border: none;
+    border-radius: .5em;
+    padding: 1%;
+}
+
+.button button:hover {
+    background-color: var(--darker-blue);
+    color: var(--gray);
+}
+ 
