@@ -65,6 +65,13 @@ router.get('/post/:id/edit', async (req, res) => {
     }
 });
 
+router.get('/create', async (req, res) => {
+    if (!req.session.logged_in) {
+        res.redirect('/login');
+        return;
+    } res.render('create-post');
+});
+
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({

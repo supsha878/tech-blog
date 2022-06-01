@@ -15,7 +15,7 @@ const updatePost = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace(`/post/${postId}`);
+            document.location.replace(`/dashboard`);
         } else {
             alert(response.statusText);
         }
