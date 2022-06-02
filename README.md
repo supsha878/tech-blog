@@ -40,4 +40,4 @@ The world of tech is a large one that can't always be captured in documentation.
 
 ![Screenshot of the tech blog's home page with two posts and a navigation bar at the top](./assets/screenshot.png)
 
-[Link to Deployment]()
+[Link to Deployment](https://tech-blog-ssharma.herokuapp.com/)
