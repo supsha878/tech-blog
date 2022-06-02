@@ -1,3 +1,4 @@
+/* store color variables */
 :root {
     --darker-blue: #084f6e;
     --dark-blue: #08709c;
@@ -13,6 +14,7 @@ body {
     background-color: var(--light-blue);
 }
 
+/* header style */
 #main-header {
     background-color: var(--dark-blue);
     flex: 0 0 100%;
@@ -41,12 +43,13 @@ body {
     text-decoration: none;
 }
 
+/* main content of the page */
 #main-content {
     flex: 0 0 100%;
     margin-bottom: 1.5%;
     padding-left: 15%;
 }
-
+/* card style */
 .card {
     width: 80%;
     margin-top: 1.5%;
@@ -112,6 +115,7 @@ body {
     justify-content: space-between;
 }
 
+/* style for buttons outside of cards */
 .button {
     margin-top: 1.5%;
     width: 80%;

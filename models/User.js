@@ -1,7 +1,9 @@
+// import dependencies and connection to database
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
+// declare and initialize User class with a function to check a password
 class User extends Model {
     checkPassword(loginPassword) {
         return bcrypt.compareSync(loginPassword, this.password);
@@ -30,7 +32,7 @@ User.init(
         }
     },
     {
-        hooks: {
+        hooks: { // hash password before it is stored
             beforeCreate: async (newUserData) => {
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
                 return newUserData;
@@ -44,4 +46,5 @@ User.init(
     }
 );
 
+// export User class
 module.exports = User;

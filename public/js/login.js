@@ -4,6 +4,7 @@ const loginFormHandler = async (event) => {
     const username = document.querySelector('#username-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
 
+    // login as existing user request
     if (username && password) {
         const response = await fetch('/api/users/login', {
             method: 'POST',
@@ -11,6 +12,7 @@ const loginFormHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' }
         });
 
+        // redirect to dashboard page
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {

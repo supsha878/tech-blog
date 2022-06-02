@@ -1,7 +1,9 @@
+// import dependencies, models, and authorization function
 const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+// get all posts created and render them onto homepage
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -24,6 +26,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+// get one post with all its comments and renders them
 router.get('/post/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
@@ -50,6 +53,7 @@ router.get('/post/:id', async (req, res) => {
     }
 });
 
+// get one post and renders it with a form to create a comment underneath
 router.get('/post/:id/comment', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
@@ -72,6 +76,7 @@ router.get('/post/:id/comment', async (req, res) => {
     }
 });
 
+// get all posts created by current user and displays in list format
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -89,6 +94,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
 });
 
+// render create post page
 router.get('/create', async (req, res) => {
     if (!req.session.logged_in) {
         res.redirect('/login');
@@ -96,6 +102,7 @@ router.get('/create', async (req, res) => {
     } res.render('create-post');
 });
 
+// get one post and render it into an edit post page 
 router.get('/post/:id/edit', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id);
@@ -111,6 +118,7 @@ router.get('/post/:id/edit', async (req, res) => {
     }
 });
 
+// render the login page
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
         res.redirect('/dashboard');
@@ -119,6 +127,7 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+// render the signup page
 router.get('/signup', (req, res) => {
     if (req.session.logged_in) {
         res.redirect('/dashboard');
@@ -127,4 +136,5 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
+// export routes
 module.exports = router;

@@ -1,8 +1,10 @@
+// import dependencies
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
 let sequelize;
 
+// create connection to database using MySQL
 if (process.env.JAWSDB_URL) {
     sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
@@ -18,4 +20,5 @@ if (process.env.JAWSDB_URL) {
     );
 }
 
+// export connection
 module.exports = sequelize;

@@ -1,6 +1,8 @@
+// import dependencies and models
 const router = require('express').Router();
 const { User } = require('../../models');
 
+// create new user when signing up
 router.post('/', async (req, res) => {
     try {
         const userData = await User.create(req.body);
@@ -16,6 +18,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+// login an existing user after checking the username and password
 router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({
@@ -45,6 +48,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// logout current user and destroy session
 router.post('/logout', (req, res) => {
     if (req.session.logged_in) {
         req.session.destroy(() => {
@@ -55,4 +59,5 @@ router.post('/logout', (req, res) => {
     }
 });
 
+// export routes
 module.exports = router;

@@ -1,7 +1,9 @@
+// import models
 const User = require('./User');
 const Post = require('./Post');
 const Comment = require('./Comment');
 
+// determine relationships between models
 User.hasMany(Post, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
@@ -29,4 +31,5 @@ Comment.belongsTo(Post, {
     foreignKey: 'post_id'
 });
 
+// export models
 module.exports = { User, Post, Comment };

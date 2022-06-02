@@ -1,6 +1,8 @@
+// import dependencies and connection to database
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
+// declare and initialize Post class
 class Post extends Model {}
 
 Post.init(
@@ -41,4 +43,5 @@ Post.init(
     }
 );
 
+// export Post class
 module.exports = Post;

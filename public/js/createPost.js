@@ -4,6 +4,7 @@ const createPost = async (event) => {
     const title = document.querySelector('#post-title').value.trim();
     const content = document.querySelector('#post-content').value.trim();
 
+    // create new post request
     if (title && content) {
         const response = await fetch('/api/posts/', {
             method: 'POST',
@@ -11,6 +12,7 @@ const createPost = async (event) => {
             headers: {'Content-Type': 'application/json'}
         });
 
+        // redirect to dashboard page
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {

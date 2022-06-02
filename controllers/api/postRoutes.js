@@ -1,6 +1,8 @@
+// import dependencies and models
 const router = require('express').Router();
 const { Post, Comment } = require('../../models');
 
+// create a new post
 router.post('/', async (req, res) => {
     try {
         req.body.user_id = req.session.user_id;
@@ -11,6 +13,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+// update an existing post
 router.put('/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id);
@@ -37,6 +40,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+// delete an existing post
 router.delete('/:id', async (req, res) => {
     try {
         const response = await Post.destroy({
@@ -55,6 +59,7 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+// create a new comment on a post
 router.post('/:id/comment', async (req, res) => {
     try {
         req.body.user_id = req.session.user_id;
@@ -67,4 +72,5 @@ router.post('/:id/comment', async (req, res) => {
     }
 });
 
+// export routes
 module.exports = router;
